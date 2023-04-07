@@ -1,0 +1,9 @@
+### Send POST request with json body
+POST http://localhost:8080/boards/post
+Content-Type: application/json
+
+{
+  "category": "LIFE",
+  "title": "Life Title",
+  "content": "Life is wonderful"
+}
