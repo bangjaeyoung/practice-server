@@ -6,6 +6,9 @@ import lombok.*;
 
 import javax.persistence.*;
 
+/**
+ * @author Jaeyoung Bang
+ */
 @Getter
 @Setter
 @Builder

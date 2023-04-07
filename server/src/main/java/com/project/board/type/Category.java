@@ -3,6 +3,9 @@ package com.project.board.type;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+/**
+ * @author Jaeyoung Bang
+ */
 @Getter
 @AllArgsConstructor
 public enum Category {
