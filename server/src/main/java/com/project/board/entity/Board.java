@@ -1,6 +1,6 @@
 package com.project.board.entity;
 
-import com.project.board.common.BaseEntity;
+import com.project.common.BaseEntity;
 import com.project.board.type.Category;
 import lombok.*;
 
