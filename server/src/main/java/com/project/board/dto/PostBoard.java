@@ -19,14 +19,14 @@ public class PostBoard {
     @Builder
     @ToString
     public static class Request {
-        @NotNull
+        @NotNull(message = "공백이 아니어야 합니다")
         private Category category;
 
-        @NotNull
-        @Length(min = 1, max = 20, message = "title length must be 1~20")
+        @NotNull(message = "공백이 아니어야 합니다")
+        @Length(min = 1, max = 20, message = "제목은 1~20자여야 합니다")
         private String title;
 
-        @NotNull
+        @NotNull(message = "공백이 아니어야 합니다")
         private String content;
     }
 
