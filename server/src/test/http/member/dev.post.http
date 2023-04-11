@@ -1,10 +1,32 @@
-### Send POST request with json body
+### 회원 추가 테스트
 POST http://localhost:8080/members/post
 Content-Type: application/json
 
 {
-  "name": "재영",
-  "email": "qkdwo4613@gmail.com",
+  "name": "Derek",
+  "email": "test@gmail.com",
   "nickname": "Derek",
   "password": "password1!"
+}
+
+### 이메일 존재여부 테스트
+POST http://localhost:8080/members/post
+Content-Type: application/json
+
+{
+"name": "Derek",
+"email": "test@gmail.com",
+"nickname": "Kevin",
+"password": "password1!"
+}
+
+### 닉네임 존재 여부 테스트
+POST http://localhost:8080/members/post
+Content-Type: application/json
+
+{
+"name": "Derek",
+"email": "test2@gmail.com",
+"nickname": "Derek",
+"password": "password1!"
 }
