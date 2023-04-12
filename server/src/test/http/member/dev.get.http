@@ -1,0 +1,15 @@
+### 회원 Id로 특정 회원 조회 (1)
+GET http://localhost:8080/members/1
+Accept: application/json
+
+### 회원 Id로 특정 회원 조회 (2)
+GET http://localhost:8080/members/2
+Accept: application/json
+
+### 회원 Id로 특정 회원 조회 (유효성 검증)
+GET http://localhost:8080/members/-1
+Accept: application/json
+
+### 전체 회원 조회
+GET http://localhost:8080/members/
+Accept: application/json

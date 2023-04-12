@@ -1,4 +1,4 @@
-### 회원 추가 테스트
+### 회원 추가 테스트 (1)
 POST http://localhost:8080/members/post
 Content-Type: application/json
 
@@ -7,6 +7,17 @@ Content-Type: application/json
   "email": "test@gmail.com",
   "nickname": "Derek",
   "password": "password1!"
+}
+
+### 회원 추가 테스트 (1)
+POST http://localhost:8080/members/post
+Content-Type: application/json
+
+{
+  "name": "Steve",
+  "email": "test2@gmail.com",
+  "nickname": "Steve",
+  "password": "password1!!"
 }
 
 ### 이메일 존재여부 테스트
