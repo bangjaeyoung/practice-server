@@ -1,0 +1,43 @@
+### 회원 정보 수정 테스트
+PATCH http://localhost:8080/members/1
+Content-Type: application/json
+
+{
+  "name": "Change",
+  "email": "ChangeTest@gmail.com",
+  "nickname": "Change",
+  "password": "password1!"
+}
+
+### 회원 정보 수정 시, 중복 이메일 검증 테스트
+PATCH http://localhost:8080/members/2
+Content-Type: application/json
+
+{
+  "name": "Change",
+  "email": "test2@gmail.com",
+  "nickname": "Derek",
+  "password": "password1!"
+}
+
+### 회원 정보 수정 시, 중복 닉네임 검증 테스트
+PATCH http://localhost:8080/members/2
+Content-Type: application/json
+
+{
+  "name": "Change",
+  "email": "ChangeTest2@gmail.com",
+  "nickname": "Change",
+  "password": "password1!"
+}
+
+### 회원 정보 수정 시, 존재하는 회원인지 검증 테스트
+PATCH http://localhost:8080/members/3
+Content-Type: application/json
+
+{
+  "name": "Derek",
+  "email": "Change@gmail.com",
+  "nickname": "ChangeTest",
+  "password": "password1!"
+}
