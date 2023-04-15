@@ -43,7 +43,6 @@ public class MemberService {
     public MemberResponseDto.Patch updateMember(Long memberId,
                                                 MemberRequestDto.Patch request) {
 
-        // Todo : 회원 정보 수정 시, 본인 제외한 같은 이메일이나 닉네임이 있는 경우 예외 처리
         verifyExistsEmail(request.getEmail());
         verifyExistsNickname(request.getNickname());
 
@@ -70,10 +69,12 @@ public class MemberService {
                 .collect(Collectors.toList());
     }
 
+    @Transactional
     public void deleteMember(Long memberId) {
         memberRepository.deleteById(memberId);
     }
 
+    @Transactional
     public void deleteMembers() {
         memberRepository.deleteAll();
     }

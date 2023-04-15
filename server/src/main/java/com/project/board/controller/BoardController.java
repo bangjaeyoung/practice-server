@@ -25,8 +25,6 @@ public class BoardController {
 
     @PostMapping("/post")
     public BoardResponseDto.Post postBoard(@Valid @RequestBody BoardRequestDto.Post request) {
-        log.info("request : {}", request);
-
         return boardService.createBoard(request);
     }
 }

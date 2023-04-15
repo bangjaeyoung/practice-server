@@ -26,8 +26,6 @@ public class MemberController {
 
     @PostMapping("/post")
     public MemberResponseDto.Post postMember(@Valid @RequestBody MemberRequestDto.Post request) {
-        log.info("request : {}", request);
-
         return memberService.createMember(request);
     }
 
