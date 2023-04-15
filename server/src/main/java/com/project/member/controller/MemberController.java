@@ -31,6 +31,12 @@ public class MemberController {
         return memberService.createMember(request);
     }
 
+    @PatchMapping("/{member-id}")
+    public MemberResponseDto.Patch editMember(@PathVariable("member-id") @Positive Long memberId,
+                                              @Valid @RequestBody MemberRequestDto.Patch request) {
+        return memberService.updateMember(memberId, request);
+    }
+
     @GetMapping("/{member-id}")
     public MemberResponseDto.Get getMember(@PathVariable("member-id") @Positive Long memberId) {
         return memberService.findMember(memberId);
@@ -39,5 +45,15 @@ public class MemberController {
     @GetMapping
     public List<MemberResponseDto.Get> getMembers() {
         return memberService.findMembers();
+    }
+
+    @DeleteMapping("/{member-id}")
+    public void deleteMember(@PathVariable("member-id") @Positive Long memberId) {
+        memberService.deleteMember(memberId);
+    }
+
+    @DeleteMapping
+    public void deleteMembers() {
+        memberService.deleteMembers();
     }
 }

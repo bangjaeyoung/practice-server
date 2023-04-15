@@ -32,6 +32,27 @@ public class MemberResponseDto {
     @Builder
     @NoArgsConstructor
     @AllArgsConstructor
+    public static class Patch {
+        private String name;
+        private String email;
+        private String nickname;
+        private String password;
+
+        public static MemberResponseDto.Patch fromEntity(Member member) {
+            return Patch.builder()
+                    .name(member.getName())
+                    .email(member.getEmail())
+                    .nickname(member.getNickname())
+                    .password(member.getPassword())
+                    .build();
+        }
+    }
+
+    @Getter
+    @Setter
+    @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
     public static class Get {
         private Long id;
         private String name;

@@ -18,12 +18,12 @@ import static com.project.exception.ErrorCode.*;
  * @author Jaeyoung Bang
  */
 @Service
+@Transactional
 @RequiredArgsConstructor
 public class MemberService {
 
     private final MemberRepository memberRepository;
 
-    @Transactional
     public MemberResponseDto.Post createMember(MemberRequestDto.Post request) {
         verifyExistsEmail(request.getEmail());
         verifyExistsNickname(request.getNickname());
@@ -40,10 +40,25 @@ public class MemberService {
         return MemberResponseDto.Post.fromEntity(member);
     }
 
+    public MemberResponseDto.Patch updateMember(Long memberId,
+                                                MemberRequestDto.Patch request) {
+
+        // Todo : 회원 정보 수정 시, 본인 제외한 같은 이메일이나 닉네임이 있는 경우 예외 처리
+        verifyExistsEmail(request.getEmail());
+        verifyExistsNickname(request.getNickname());
+
+        Member findMember = verifyExistsMember(memberId);
+        findMember.setName(request.getName());
+        findMember.setEmail(request.getEmail());
+        findMember.setNickname(request.getNickname());
+        findMember.setPassword(request.getPassword());
+
+        return MemberResponseDto.Patch.fromEntity(findMember);
+    }
+
     @Transactional(readOnly = true)
     public MemberResponseDto.Get findMember(Long memberId) {
-        Member findMember = memberRepository.findById(memberId)
-                .orElseThrow(() -> new BusinessLogicException(MEMBER_NOT_FOUND));
+        Member findMember = verifyExistsMember(memberId);
 
         return MemberResponseDto.Get.fromEntity(findMember);
     }
@@ -53,6 +68,14 @@ public class MemberService {
         return memberRepository.findAll()
                 .stream().map(MemberResponseDto.Get::fromEntity)
                 .collect(Collectors.toList());
+    }
+
+    public void deleteMember(Long memberId) {
+        memberRepository.deleteById(memberId);
+    }
+
+    public void deleteMembers() {
+        memberRepository.deleteAll();
     }
 
     private void verifyExistsEmail(String email) {
@@ -67,5 +90,11 @@ public class MemberService {
                 .ifPresent((member -> {
                     throw new BusinessLogicException(ALREADY_EXISTS_NICKNAME);
                 }));
+    }
+
+    private Member verifyExistsMember(Long memberId) {
+        return memberRepository.findById(memberId).orElseThrow(
+                () -> new BusinessLogicException(MEMBER_NOT_FOUND)
+        );
     }
 }
