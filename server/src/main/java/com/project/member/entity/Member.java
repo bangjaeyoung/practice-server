@@ -1,7 +1,6 @@
-package com.project.board.entity;
+package com.project.member.entity;
 
 import com.project.common.BaseEntity;
-import com.project.board.type.Category;
 import lombok.*;
 
 import javax.persistence.*;
@@ -15,18 +14,21 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Board extends BaseEntity {
+public class Member extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Enumerated(EnumType.STRING)
-    private Category category;
+    @Column(nullable = false)
+    private String name;
 
     @Column(nullable = false)
-    private String title;
+    private String email;
 
     @Column(nullable = false)
-    private String content;
+    private String nickname;
+
+    @Column(nullable = false)
+    private String password;
 }

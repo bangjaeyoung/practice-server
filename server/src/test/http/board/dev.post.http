@@ -1,4 +1,4 @@
-### Send POST request with json body
+### 게시판 추가 테스트
 POST http://localhost:8080/boards/post
 Content-Type: application/json
 

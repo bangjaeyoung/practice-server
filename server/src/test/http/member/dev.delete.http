@@ -1,0 +1,5 @@
+### 특정 회원 삭제 테스트
+DELETE http://localhost:8080/members/1
+
+### 전체 회원 삭제 테스트
+DELETE http://localhost:8080/members

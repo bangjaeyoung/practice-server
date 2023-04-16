@@ -1,6 +1,7 @@
 package com.project.board.service;
 
-import com.project.board.dto.PostBoard;
+import com.project.board.dto.BoardRequestDto;
+import com.project.board.dto.BoardResponseDto;
 import com.project.board.entity.Board;
 import com.project.board.repository.BoardRepository;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +18,7 @@ public class BoardService {
     private final BoardRepository boardRepository;
 
     @Transactional
-    public PostBoard.Response createBoard(PostBoard.Request request) {
+    public BoardResponseDto.Post createBoard(BoardRequestDto.Post request) {
 
         Board board = Board.builder()
                 .category(request.getCategory())
@@ -27,6 +28,6 @@ public class BoardService {
 
         boardRepository.save(board);
 
-        return PostBoard.Response.fromEntity(board);
+        return BoardResponseDto.Post.fromEntity(board);
     }
 }
